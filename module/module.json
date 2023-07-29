@@ -20,7 +20,7 @@
 	"systems": ["dnd5e"],
 	"authors": [{
 		"name": "GameCrazed",
-		"url": "https://gitlab.com/GameCrazed/foundryvtt-magic-items"
+		"url": "https://github.com/GameCrazed/CrazedMagicItems"
 	}],
 	"esmodules": ["magicitems.js"],
 	"scripts": [],
@@ -75,7 +75,7 @@
 		"path": "./packs/magic-items-item-tables.db",
 		"entity": "RollTable"
 	}],
-	"url": "https://gitlab.com/GameCrazed/foundryvtt-magic-items",
-	"manifest": "https://gitlab.com/GameCrazed/foundryvtt-magic-items/raw/master/module/module.json",
-	"download": "https://gitlab.com/GameCrazed/foundryvtt-magic-items/-/jobs/artifacts/3.0.0/raw/magic-items.zip?job=build"
+	"url": "https://github.com/GameCrazed/CrazedMagicItems",
+	"manifest": "https://raw.githubusercontent.com/GameCrazed/CrazedMagicItems/master/module/module.json",
+	"download": "https://github.com/GameCrazed/CrazedMagicItems/archive/refs/heads/master.zip"
 }
