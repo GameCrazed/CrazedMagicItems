@@ -455,11 +455,11 @@ class MagicItemTable extends MagicItemEntry {
             if(entity) {
                 let item = (await actor.createEmbeddedDocuments("Item", [entity]))[0];
                 const chatData = await item.roll({createMessage: false});
-                ChatMessage.create(
-                    mergeObject(chatData, {
-                        "flags.dnd5e.itemData": item
-                    })
-                );
+                // ChatMessage.create(
+                    // mergeObject(chatData, {
+                        // "flags.dnd5e.itemData": item
+                    // })
+                // );
             }
         }
     }
@@ -660,11 +660,11 @@ export class OwnedMagicItem extends MagicItem {
             });
         }
         if(destroyed) {
-            ChatMessage.create({
-                user: game.user._id,
-                speaker: ChatMessage.getSpeaker({actor: this.actor}),
-                content: this.formatMessage(`<b>${this.name}</b> ${this.destroyFlavorText}`)
-            });
+            // ChatMessage.create({
+                // user: game.user._id,
+                // speaker: ChatMessage.getSpeaker({actor: this.actor}),
+                // content: this.formatMessage(`<b>${this.name}</b> ${this.destroyFlavorText}`)
+            // });
         }
         return destroyed;
     }
@@ -736,11 +736,11 @@ export class OwnedMagicItem extends MagicItem {
 
         this.update();
 
-        ChatMessage.create({
-            speaker: { actor: this.actor },
-            type: CONST.CHAT_MESSAGE_TYPES.OTHER,
-            content: this.formatMessage(msg)
-        });
+        // ChatMessage.create({
+            // speaker: { actor: this.actor },
+            // type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+            // content: this.formatMessage(msg)
+        // });
     }
 
     entryBy(itemId) {
@@ -847,11 +847,11 @@ class AbstractOwnedEntry {
             });
         }
         if(destroyed) {
-            ChatMessage.create({
-               user: game.user._id,
-               speaker: ChatMessage.getSpeaker({actor: this.actor}),
-               content: this.magicItem.formatMessage(`<b>${this.name}</b> ${this.magicItem.destroyFlavorText}`)
-            });
+            // ChatMessage.create({
+               // user: game.user._id,
+               // speaker: ChatMessage.getSpeaker({actor: this.actor}),
+               // content: this.magicItem.formatMessage(`<b>${this.name}</b> ${this.magicItem.destroyFlavorText}`)
+            // });
         }
         return destroyed;
     }
@@ -944,11 +944,11 @@ class OwnedMagicItemSpell extends AbstractOwnedEntry {
                 "configureDialog": false,
                 "createMessage": false
             });
-            ChatMessage.create(
-                mergeObject(chatData, {
-                    "flags.dnd5e.itemData": this.ownedItem.toJSON()
-                })
-            );
+            // ChatMessage.create(
+                // mergeObject(chatData, {
+                    // "flags.dnd5e.itemData": this.ownedItem.toJSON()
+                // })
+            // );
             this.consume(consumption);
             this.magicItem.update();
         }
@@ -983,13 +983,13 @@ class OwnedMagicItemFeat extends AbstractOwnedEntry {
         let onUsage = this.item.effect === 'e1' ?
         () => { this.consume(consumption) } :
         () => {
-            ChatMessage.create({
-                user: game.user._id,
-                speaker: ChatMessage.getSpeaker({actor: this.magicItem.actor}),
-                content: this.magicItem.formatMessage(
-                    `<b>${this.name}</b>: ${game.i18n.localize("MAGICITEMS.SheetConsumptionDestroyMessage")}`
-                )
-            });
+            // ChatMessage.create({
+                // user: game.user._id,
+                // speaker: ChatMessage.getSpeaker({actor: this.magicItem.actor}),
+                // content: this.magicItem.formatMessage(
+                    // `<b>${this.name}</b>: ${game.i18n.localize("MAGICITEMS.SheetConsumptionDestroyMessage")}`
+                // )
+            // });
 
             this.magicItem.destroyItem();
         };
@@ -999,11 +999,11 @@ class OwnedMagicItemFeat extends AbstractOwnedEntry {
                 "createMessage": false,
                 "configureDialog": false
             });
-            ChatMessage.create(
-                mergeObject(chatData, {
-                    "flags.dnd5e.itemData": this.ownedItem.toJSON()
-                })
-            );
+            // ChatMessage.create(
+                // mergeObject(chatData, {
+                    // "flags.dnd5e.itemData": this.ownedItem.toJSON()
+                // })
+            // );
             onUsage();
             this.magicItem.update();
         };
